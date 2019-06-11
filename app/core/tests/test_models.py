@@ -1,4 +1,4 @@
-from core.models import Tag
+from core.models import Tag, Ingredient
 from django.test import TestCase
 from django.contrib.auth import get_user_model
 
@@ -51,3 +51,12 @@ class ModelTests(TestCase):
         )
 
         self.assertEqual(str(tag), tag.name)
+
+    def test_ingredient_str(self):
+        """Test the ingredient string representation"""
+        ingredient = Ingredient.objects.create(
+            user=sample_user(),
+            name='Cucumber'
+        )
+
+        self.assertEqual(str(ingredient), ingredient.name)
